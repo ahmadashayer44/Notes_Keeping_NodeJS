@@ -45,4 +45,17 @@ router.delete("/notes/:id", async function deleteNote(req, res) {
     }
   }
 });
+router.put("/notes/:id", async function updateNote(req, res) {
+  try {
+    const id = req.params.id;
+    await Note.findByIdAndUpdate(id, req.body);
+    res.status(200).json({ message: "Note updated successfully" });
+  } catch (error) {
+    if (error.kind === "ObjectId" || error.name === "NotFound") {
+      return res.status(404).json({ error: "Note not found" });
+    } else {
+      return res.status(500).json({ error: "Failed to get notes" });
+    }
+  }
+});
 module.exports = router;
