@@ -74,4 +74,23 @@ router.get("/notes/search", async function searchNote(req, res) {
     }
   }
 });
+router.get("/notes/:count", async function getCount(req, res) {
+  let count = req.params.count;
+  count = parseInt(count);
+  console.log(count);
+
+  try {
+    if (isNaN(count)) {
+      return res.status(400).json({ error: "Count must be a number" });
+    }
+    const notes = await Note.find({}).limit(count);
+    res.json(notes);
+  } catch (error) {
+    if (error.kind === "ObjectId" || error.name === "NotFound") {
+      return res.status(404).json({ error: "Note not found" });
+    } else {
+      return res.status(500).json({ error: "Failed to get notes" });
+    }
+  }
+});
 module.exports = router;
