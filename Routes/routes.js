@@ -58,4 +58,20 @@ router.put("/notes/:id", async function updateNote(req, res) {
     }
   }
 });
+router.get("/notes/search", async function searchNote(req, res) {
+  try {
+    let query = req.query.query;
+    if (!query) {
+      return res.status(400).json({ error: "Query is required" });
+    }
+    let notes = await Note.find({ $text: { $search: query } });
+    res.json(notes);
+  } catch (error) {
+    if (error.kind === "ObjectId" || error.name === "NotFound") {
+      return res.status(404).json({ error: "Note not found" });
+    } else {
+      return res.status(500).json({ error: "Failed to get notes" });
+    }
+  }
+});
 module.exports = router;
