@@ -5,8 +5,12 @@ router.get("/notes", async function getNotes(req, res) {
   try {
     let notes = await Note.find({});
     res.json(notes);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to get notes" });
+  } catch (error) {
+    if (error.kind === "ObjectId" || error.name === "NotFound") {
+      return res.status(404).json({ error: "Note not found" });
+    } else {
+      return res.status(500).json({ error: "Failed to get notes" });
+    }
   }
 });
 
@@ -20,9 +24,25 @@ router.post("/notes", async function postNote(req, res) {
       await note.save();
       res.status(201).json(note);
     } catch (error) {
-      res.status(500).json({ error: "Failed to get notes" });
+      if (error.kind === "ObjectId" || error.name === "NotFound") {
+        return res.status(404).json({ error: "Note not found" });
+      } else {
+        return res.status(500).json({ error: "Failed to get notes" });
+      }
     }
   }
 });
-
+router.delete("/notes/:id", async function deleteNote(req, res) {
+  try {
+    const id = req.params.id;
+    await Note.findByIdAndDelete(id);
+    res.status(200).json({ message: "Note deleted successfully" });
+  } catch (error) {
+    if (error.kind === "ObjectId" || error.name === "NotFound") {
+      return res.status(404).json({ error: "Note not found" });
+    } else {
+      return res.status(500).json({ error: "Failed to get notes" });
+    }
+  }
+});
 module.exports = router;
