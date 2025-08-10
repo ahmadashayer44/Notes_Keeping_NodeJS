@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Buy groceries",
+    "content": "Milk, eggs, bread, and coffee.",
+    "creationDate": "2025-08-01T09:15:00Z"
+  },
+  {
+    "title": "Meeting with John",
+    "content": "Discuss project updates and deadlines.",
+    "creationDate": "2025-08-02T14:00:00Z"
+  },
+  {
+    "title": "Book tickets",
+    "content": "Reserve train tickets for the weekend trip.",
+    "creationDate": "2025-08-03T08:45:00Z"
+  },
+  {
+    "title": "Workout plan",
+    "content": "Upper body training and 5km run.",
+    "creationDate": "2025-08-04T06:30:00Z"
+  },
+  {
+    "title": "Dentist appointment",
+    "content": "Routine cleaning at Smile Dental Clinic.",
+    "creationDate": "2025-08-05T11:00:00Z"
+  },
+  {
+    "title": "Finish report",
+    "content": "Complete the quarterly financial report.",
+    "creationDate": "2025-08-06T17:20:00Z"
+  },
+  {
+    "title": "Birthday reminder",
+    "content": "Buy a gift for Sarah's birthday.",
+    "creationDate": "2025-08-07T10:10:00Z"
+  },
+  {
+    "title": "Car service",
+    "content": "Oil change and tire rotation.",
+    "creationDate": "2025-08-08T09:00:00Z"
+  },
+  {
+    "title": "Read a book",
+    "content": "Continue reading 'Atomic Habits'.",
+    "creationDate": "2025-08-09T19:45:00Z"
+  },
+  {
+    "title": "Plan weekend hike",
+    "content": "Check weather and prepare equipment.",
+    "creationDate": "2025-08-10T07:30:00Z"
+  }
+]
