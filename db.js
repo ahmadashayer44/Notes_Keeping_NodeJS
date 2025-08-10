@@ -8,7 +8,7 @@ const noteSchema = new mongoose.Schema({
   content: String,
   creationDate: Date,
 });
-
+noteSchema.index({ title: "text", content: "text" });
 const Note = mongoose.model("Note", noteSchema);
 
 async function db() {
